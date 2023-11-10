@@ -10,6 +10,9 @@ def validar_renda(renda):
 def index():
     show_result = False
     error_message = None
+    prestacao_mensal = 0.0
+    custo_total = 0.0
+    taxa_juros_porcentagem = 0.0
     
     if request.method == 'POST':
         renda = float(request.form['renda'])
@@ -32,9 +35,9 @@ def index():
                            renda=request.form.get('renda', ''),
                            valor_emprestimo=request.form.get('valor_emprestimo', ''),
                            meses_pagamento=request.form.get('meses_pagamento', ''),
-                           prestacao_mensal=f'{prestacao_mensal:.2f}' if show_result else '',
-                           custo_total=f'{custo_total:.2f}' if show_result else '',
-                           taxa_juros_porcentagem=f'{taxa_juros_porcentagem:.2f}' if show_result else '',
+                           prestacao_mensal=prestacao_mensal if show_result else '',
+                           custo_total=custo_total if show_result else '',
+                           taxa_juros_porcentagem=taxa_juros_porcentagem if show_result else '',
                            error_message=error_message)
 
 if __name__ == '__main__':

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário de Empréstimo</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" />
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</head>
+<body>
+    <h2>Calculadora de Empréstimo</h2>
+    <form id="loan-form">
+        <label for="renda">Renda Mensal:</label><br>
+        <input type="number" id="renda" name="renda" required><br><br>
+
+        <label for="valor_emprestimo">Valor do Empréstimo:</label><br>
+        <input type="number" id="valor_emprestimo" name="valor_emprestimo" required><br><br>
+
+        <label for="meses_pagamento">Meses de Pagamento:</label><br>
+        <input type="number" id="meses_pagamento" name="meses_pagamento" required><br><br>
+
+        <input type="button" value="Calcular" onclick="calcularEmprestimo()">
+    </form>
+
+    <div id="result-container" style="display: none;">
+        <p><strong>Valor das prestações mensais:</strong> R$ <span id="prestacao-mensal"></span></p>
+        <p><strong>Custo total do empréstimo:</strong> R$ <span id="custo-total"></span></p>
+        <p><strong>Taxa de Juros:</strong> <span id="taxa-juros"></span></p>
+    </div>
+</body>
+</html>
+
+

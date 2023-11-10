@@ -32,17 +32,8 @@ input[type="number"] {
     font-size: 20px;
 }
 
-label {
-    display: block;
-    text-align: left;
-    font-size: 18px;
-    font-weight: lighter;
-    font-family: 'Roboto Slab', serif;
-    color: #2e443a;
-}
-
-input[type="submit"] {
-    width: 40%;
+input[type="button"] {
+    width: 50%;  /* Alterado para ocupar 100% da largura */
     background-color: #3de292e8;
     color: white;
     padding: 12px 20px;
@@ -53,11 +44,20 @@ input[type="submit"] {
     font-weight: bold;
 }
 
-input[type="submit"]:hover {
+input[type="button"]:hover {
     background-color: #aee9cf;
 }
 
-.result-container {
+label {
+    display: block;
+    text-align: left;
+    font-size: 18px;
+    font-weight: lighter;
+    font-family: 'Roboto Slab', serif;
+    color: #2e443a;
+}
+
+#result-container {
     width: 300px;
     margin: 20px auto;
     background-color: #f9f9f9;
@@ -66,7 +66,7 @@ input[type="submit"]:hover {
     border-radius: 5px;
 }
 
-.result-container p {
+#result-container p {
     font-size: 18px;
     margin: 10px 0;
 }
