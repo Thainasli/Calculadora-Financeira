@@ -33,7 +33,7 @@ input[type="number"] {
 }
 
 input[type="button"] {
-    width: 50%;  /* Alterado para ocupar 100% da largura */
+    width: 50%; 
     background-color: #3de292e8;
     color: white;
     padding: 12px 20px;
