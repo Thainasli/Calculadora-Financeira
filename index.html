@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário de Empréstimo</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Calculadora de Empréstimo</h2>
+    <form id="loan-form" action="/" method="post">
+        <label for="renda">Renda Mensal:</label><br>
+        <input type="number" id="renda" name="renda" required><br><br>
+
+        <label for="valor_emprestimo">Valor do Empréstimo:</label><br>
+        <input type="number" id="valor_emprestimo" name="valor_emprestimo" required><br><br>
+
+        <label for="meses_pagamento">Meses de Pagamento:</label><br>
+        <input type="number" id="meses_pagamento" name="meses_pagamento" required><br><br>
+
+        <input type="submit" value="Calcular">
+    </form>
+    {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+    {% endif %}
+    {% if show_result %}
+    <div class="result-container" id="result-container">
+        <p><strong>Valor das prestações mensais:</strong> R$ {{ '%.2f'|format(prestacao_mensal) }}</p>
+        <p><strong>Custo total do empréstimo:</strong> R$ {{ '%.2f'|format(custo_total) }}</p>
+        <p><strong>Taxa de Juros:</strong> {{ '%.2f'|format(taxa_juros_porcentagem) }}%</p>
+    </div>
+    {% endif %}
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
