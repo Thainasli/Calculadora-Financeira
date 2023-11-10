@@ -9,6 +9,8 @@ def validar_renda(renda):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     show_result = False
+    error_message = None
+    
     if request.method == 'POST':
         renda = float(request.form['renda'])
         if validar_renda(renda):
@@ -22,22 +24,19 @@ def index():
             prestacao_mensal = (valor_emprestimo + juros_cobrado) / meses_pagamento
             custo_total = valor_emprestimo + juros_cobrado
             show_result = True
-
-            return render_template('index.html', 
-                                   show_result=show_result,
-                                   renda=renda,
-                                   valor_emprestimo=valor_emprestimo,
-                                   meses_pagamento=meses_pagamento,
-                                   prestacao_mensal=prestacao_mensal,
-                                   custo_total=custo_total,
-                                   taxa_juros_porcentagem=taxa_juros_porcentagem,
-                                   error_message=error_message)
         else:
             error_message = "Renda fora do limite especificado. Tente novamente."
-    
+
     return render_template('index.html', 
-                           show_result=show_result, 
+                           show_result=show_result,
+                           renda=request.form.get('renda', ''),
+                           valor_emprestimo=request.form.get('valor_emprestimo', ''),
+                           meses_pagamento=request.form.get('meses_pagamento', ''),
+                           prestacao_mensal=f'{prestacao_mensal:.2f}' if show_result else '',
+                           custo_total=f'{custo_total:.2f}' if show_result else '',
+                           taxa_juros_porcentagem=f'{taxa_juros_porcentagem:.2f}' if show_result else '',
                            error_message=error_message)
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(debug=True, port=port)
