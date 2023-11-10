@@ -18,26 +18,17 @@
 
         <input type="submit" value="Calcular">
     </form>
-   {% if error_message %}
-   <p id="error-message" style="display: block;">{{ error_message }}</p>
-   {% else %}
-   <p id="error-message" style="display: none;">{{ error_message }}</p>
-   {% endif %}
-        
-   {% if show_result %}
-   <div class="result-container" id="result-container">
-       <p><strong>Valor das prestações mensais:</strong> R$ {{ '%.2f'|format(prestacao_mensal) }}</p>
-       <p><strong>Custo total do empréstimo:</strong> R$ {{ '%.2f'|format(custo_total) }}</p>
-       <p><strong>Taxa de Juros:</strong> {{ '%.2f'|format(taxa_juros_porcentagem) }}%</p>
-   </div>
-   {% else %}
-   <div class="result-container" id="result-container" style="display: none;">
-       <p><strong>Valor das prestações mensais:</strong> R$ {{ '%.2f'|format(prestacao_mensal) }}</p>
-       <p><strong>Custo total do empréstimo:</strong> R$ {{ '%.2f'|format(custo_total) }}</p>
-       <p><strong>Taxa de Juros:</strong> {{ '%.2f'|format(taxa_juros_porcentagem) }}%</p>
-   </div>
-   {% endif %}
-   <script src="{{ url_for('static', filename='script.js') }}"></script>
+    {% if error_message %}
+        <p id="error-message">{{ error_message }}</p>
+    {% endif %}
+
+    {% if show_result %}
+        <div class="result-container" id="result-container">
+            <p><strong>Valor das prestações mensais:</strong> R$ {{ '%.2f'|format(prestacao_mensal) }}</p>
+            <p><strong>Custo total do empréstimo:</strong> R$ {{ '%.2f'|format(custo_total) }}</p>
+            <p><strong>Taxa de Juros:</strong> {{ '%.2f'|format(taxa_juros_porcentagem) }}%</p>
+        </div>
+    {% endif %}
 </body>
 </html>
 
