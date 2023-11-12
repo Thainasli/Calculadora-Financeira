@@ -5,13 +5,23 @@ function calcularEmprestimo() {
 
     var taxa_juros_mensal = 0.03;
     var taxa_juros_porcentagem = taxa_juros_mensal * 100;
+    
+    if (renda < 1000) {
+        document.getElementById('error-container').textContent = "Renda fora do limite especificado. Tente novamente.";
+        document.getElementById('error-container').style.display = 'block';
+        document.getElementById('result-container').style.display = 'none';
+        return; 
+    }
+
     var juros_cobrado = valor_emprestimo * taxa_juros_mensal * meses_pagamento;
     var prestacao_mensal = (valor_emprestimo + juros_cobrado) / meses_pagamento;
     var custo_total = valor_emprestimo + juros_cobrado;
+
 
     document.getElementById('prestacao-mensal').textContent = prestacao_mensal.toFixed(2);
     document.getElementById('custo-total').textContent = custo_total.toFixed(2);
     document.getElementById('taxa-juros').textContent = taxa_juros_porcentagem.toFixed(2) + "%";
 
     document.getElementById('result-container').style.display = 'block';
+    document.getElementById('error-container').style.display = 'none';  // Esconder a mensagem de erro se não houver erro
 }

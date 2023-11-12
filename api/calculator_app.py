@@ -4,7 +4,7 @@ import os
 app = Flask(__name__)
 
 def validar_renda(renda):
-    return 1000 <= renda <= 10000
+    return 1000 >= renda <= 10000
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -29,6 +29,7 @@ def index():
             show_result = True
         else:
             error_message = "Renda fora do limite especificado. Tente novamente."
+            show_result = False
 
     return render_template('index.html', 
                            show_result=show_result,
